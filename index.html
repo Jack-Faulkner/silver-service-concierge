@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silver Service Concierge | Boutique Senior Care in Austin, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #1a2744;
+  --navy-light: #243351;
+  --silver: #c0c7d0;
+  --silver-light: #e8ecf1;
+  --gold: #c9a84c;
+  --gold-light: #dfc06a;
+  --white: #ffffff;
+  --cream: #f9f8f5;
+  --text: #2c3e50;
+  --text-light: #5a6a7a;
+  --blue-accent: #4a7fb5;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(26, 39, 68, 0.08);
+  --shadow-lg: 0 12px 48px rgba(26, 39, 68, 0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.25; }
+
+a { text-decoration: none; color: inherit; transition: color 0.3s; }
+
+img { max-width: 100%; display: block; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(26, 39, 68, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  transition: all 0.3s;
+}
+nav .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--silver-light); font-size: 0.9rem; font-weight: 500;
+  letter-spacing: 0.3px; position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--gold); transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  background: var(--gold); color: var(--navy) !important; padding: 10px 24px;
+  border-radius: 6px; font-weight: 600; font-size: 0.85rem;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  transition: background 0.3s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.nav-cta::after { display: none !important; }
+
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer; padding: 8px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--white);
+  margin: 5px 0; transition: all 0.3s;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  background: linear-gradient(160deg, var(--navy) 0%, #1e3050 50%, #1a2744 100%);
+  position: relative; overflow: hidden;
+  padding-top: 72px;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -50%; right: -20%; width: 80%; height: 200%;
+  background: radial-gradient(ellipse, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+  background: linear-gradient(to top, var(--cream), transparent);
+  pointer-events: none;
+}
+.hero .container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-content { padding: 40px 0; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(201, 168, 76, 0.15); color: var(--gold);
+  padding: 6px 16px; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 24px; border: 1px solid rgba(201, 168, 76, 0.25);
+}
+.hero h1 {
+  font-size: 3.5rem; color: var(--white); font-weight: 700;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: normal; color: var(--gold);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.15rem; color: var(--silver); line-height: 1.8;
+  margin-bottom: 16px; max-width: 520px;
+}
+.hero-note {
+  font-size: 0.85rem !important; color: var(--text-light) !important;
+  font-style: italic;
+}
+.hero-actions { display: flex; gap: 16px; margin-top: 32px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--navy);
+  padding: 16px 32px; border-radius: 8px;
+  font-weight: 600; font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.3s; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3); }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--white);
+  padding: 16px 32px; border-radius: 8px;
+  font-weight: 500; font-size: 0.95rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.3s; cursor: pointer;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.hero-visual {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius); padding: 28px 24px;
+  text-align: center; backdrop-filter: blur(8px);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.stat-card:hover { transform: translateY(-4px); border-color: rgba(201, 168, 76, 0.3); }
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 0.8rem; color: var(--silver); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+
+/* ─── PILLARS ─── */
+.pillars { padding: 100px 0; background: var(--cream); }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header h2 { font-size: 2.5rem; color: var(--navy); margin-bottom: 16px; }
+.section-header p { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+.divider { width: 60px; height: 3px; background: var(--gold); margin: 20px auto 0; border-radius: 2px; }
+
+.pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.pillar {
+  background: var(--white); border-radius: var(--radius); padding: 40px 28px;
+  box-shadow: var(--shadow); position: relative; overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.pillar:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.pillar::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--blue-accent));
+}
+.pillar-icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(26, 39, 68, 0.06), rgba(201, 168, 76, 0.1));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin-bottom: 20px;
+}
+.pillar h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 12px; }
+.pillar p { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; }
+
+/* ─── SERVICES ─── */
+.services { padding: 100px 0; background: var(--white); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  margin-top: 64px;
+}
+.service-card {
+  background: var(--cream); border-radius: var(--radius); padding: 36px 28px;
+  border: 1px solid transparent;
+  transition: all 0.3s; position: relative;
+}
+.service-card:hover {
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.service-icon {
+  width: 48px; height: 48px; border-radius: 10px;
+  background: var(--navy); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 20px;
+}
+.service-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 10px; }
+.service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; }
+
+/* ─── PACKAGES ─── */
+.packages { padding: 100px 0; background: var(--navy); color: var(--white); }
+.packages .section-header h2 { color: var(--white); }
+.packages .section-header p { color: var(--silver); }
+.packages-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  margin-top: 64px;
+}
+.package-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 40px 32px;
+  transition: all 0.3s; position: relative;
+}
+.package-card:hover {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-4px);
+}
+.package-card.featured {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+}
+.package-card.featured::before {
+  content: 'Most Popular';
+  position: absolute; top: -1px; right: 24px;
+  background: var(--gold); color: var(--navy);
+  padding: 6px 16px; border-radius: 0 0 8px 8px;
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.package-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 600; margin-bottom: 8px;
+}
+.package-price {
+  font-size: 2.2rem; font-weight: 700; color: var(--gold);
+  margin-bottom: 4px;
+}
+.package-price span { font-size: 0.9rem; font-weight: 400; color: var(--silver); }
+.package-note { font-size: 0.8rem; color: var(--text-light); margin-bottom: 24px; }
+.package-features { list-style: none; margin-bottom: 32px; }
+.package-features li {
+  padding: 8px 0; font-size: 0.9rem; color: var(--silver-light);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.package-features li::before {
+  content: '\2713'; color: var(--gold); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+.btn-package {
+  display: block; width: 100%; text-align: center;
+  padding: 14px; border-radius: 8px;
+  font-weight: 600; font-size: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--white); background: transparent;
+  cursor: pointer; transition: all 0.3s;
+}
+.btn-package:hover { border-color: var(--gold); color: var(--gold); }
+.package-card.featured .btn-package {
+  background: var(--gold); color: var(--navy); border-color: var(--gold);
+}
+.package-card.featured .btn-package:hover { background: var(--gold-light); }
+
+/* ─── ADDITIONAL SERVICES ─── */
+.additional { padding: 100px 0; background: var(--cream); }
+.additional-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 64px; }
+.add-card {
+  background: var(--white); border-radius: var(--radius); padding: 36px;
+  box-shadow: var(--shadow); transition: all 0.3s;
+}
+.add-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.add-card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.add-card h3 .icon { font-size: 1.4rem; }
+.add-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px; line-height: 1.7; }
+.add-card ul { list-style: none; }
+.add-card ul li {
+  padding: 6px 0; font-size: 0.88rem; color: var(--text);
+  padding-left: 20px; position: relative;
+}
+.add-card ul li::before {
+  content: '\2022'; color: var(--gold); font-weight: 700;
+  position: absolute; left: 0; font-size: 1.1rem;
+}
+
+/* ─── BOTTOM CTA ─── */
+.cta-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--navy) 0%, #1e3050 100%);
+  text-align: center;
+}
+.cta-section h2 { font-size: 2.4rem; color: var(--white); margin-bottom: 16px; }
+.cta-section p { font-size: 1.1rem; color: var(--silver); max-width: 560px; margin: 0 auto 32px; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.cta-contact {
+  display: flex; gap: 40px; justify-content: center; margin-top: 40px;
+  flex-wrap: wrap;
+}
+.cta-contact a {
+  color: var(--silver-light); font-size: 0.95rem;
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.3s;
+}
+.cta-contact a:hover { color: var(--gold); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #111b2e; color: var(--silver);
+  padding: 48px 0 24px; text-align: center;
+}
+footer .container {
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; color: var(--white); font-weight: 600;
+}
+.footer-brand span { color: var(--gold); }
+.footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; justify-content: center; }
+.footer-links a { font-size: 0.85rem; color: var(--silver); transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; color: var(--silver);
+  transition: all 0.3s;
+}
+.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-copy { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .hero p { margin: 0 auto 16px; }
+  .hero-actions { justify-content: center; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .packages-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 2.8rem; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  nav.open .nav-links {
+    display: flex; flex-direction: column;
+    position: absolute; top: 72px; left: 0; right: 0;
+    background: var(--navy); padding: 24px;
+    gap: 20px; border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .additional-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.2rem; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.9rem; }
+  .hero-actions { flex-direction: column; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .cta-actions { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="logo"><span>Silver</span> Service Concierge</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">Why Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#packages">Care Plan</a></li>
+      <li><a href="#additional">More Services</a></li>
+      <li><a href="#packages" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Austin, Texas &mdash; Locally Owned</div>
+      <h1>Boutique Concierge Care for <em>Aging in Place</em></h1>
+      <p>Non-medical support for seniors who want to stay home with dignity, independence, and white-glove attention to detail. We're not a franchise &mdash; we're long-time Austinites who treat every client like family.</p>
+      <p>We limit enrollment to 100 clients per city with a small caseload per caregiver, ensuring truly personalized care.</p>
+      <p class="hero-note">*Licensed medical staff &amp; memory care specialists available for select services.</p>
+      <div class="hero-actions">
+        <a href="#packages" class="btn-primary">Schedule a Consultation &#8594;</a>
+        <a href="#services" class="btn-secondary">View Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">100</div>
+          <div class="stat-label">Max Clients Per City</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years in Austin</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1:1</div>
+          <div class="stat-label">Personalized Care</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Support Available</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="section-header">
+      <h2>Why Silver Service</h2>
+      <p>A different standard of senior concierge care, built on four pillars.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">&#9829;</div>
+        <h3>Hands-On Personal Care</h3>
+        <p>Founded by long-time Austinites, our refined service, attention to detail, and protective care create a seamless, elevated living experience at home.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">&#9734;</div>
+        <h3>Built for Families</h3>
+        <p>Finding a reliable, compassionate partner to help loved ones age in place isn't easy. We provide thoughtful coordination, hands-on support, and advocacy when it matters most.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">&#9752;</div>
+        <h3>Peace of Mind</h3>
+        <p>We handle life's details &mdash; errands, appointments, household coordination, and trusted support &mdash; so your loved ones can focus on enjoying each day.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">&#9889;</div>
+        <h3>Independence &amp; Empowerment</h3>
+        <p>Seniors maintain independence without sacrificing support. Tailored concierge services that simplify life, reduce stress, and promote confidence at every stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <h2>Specialized Concierge Services</h2>
+      <p>Comprehensive, customized support covering every dimension of daily living.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">&#127968;</div>
+        <h3>Housekeeping &amp; Cooking</h3>
+        <p>Deep cleaning to light housekeeping, full meal plans to functional meal planning. We keep the home running smoothly and nutrition on track.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#129309;</div>
+        <h3>Companionship</h3>
+        <p>From a few hours a week to live-in arrangements, our caregivers provide genuine human connection in any configuration your family needs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128295;</div>
+        <h3>Home Repair &amp; AIP Remodeling</h3>
+        <p>Technology help, pool maintenance, yard work, appliance repair, pest control &mdash; from minor fixes to full aging-in-place remodeling for safe living.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128663;</div>
+        <h3>Transportation</h3>
+        <p>Reliable transportation to appointments, meetings, errands, and social engagements. Your loved one is never stranded.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128200;</div>
+        <h3>Financial Services</h3>
+        <p>Bill pay, tax preparation, and fraud monitoring through our network of licensed CPAs and bookkeepers. Full financial peace of mind.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#128107;</div>
+        <h3>Toileting, Bathing &amp; Personal Care</h3>
+        <p>Licensed caregivers provide dignified, professional assistance with personal hygiene and daily care routines.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — LET'S BUILD A CARE PLAN -->
+<section class="cta-section" id="packages">
+  <div class="container">
+    <h2>Let's Build a Care Plan Together</h2>
+    <p>SSC is a boutique concierge service &mdash; not a franchise. We customize every care plan to your loved one's specific needs, with highly vetted aides and vendors you can trust.</p>
+    <div class="cta-actions">
+      <a href="tel:5127624771" class="btn-primary">&#9742; Call 512-762-4771</a>
+      <a href="mailto:info@silverserviceconcierge.com" class="btn-secondary" style="color:#fff;">&#9993; Email Us</a>
+    </div>
+    <div class="cta-contact">
+      <a href="mailto:lyndie@silverserviceconcierge.com">&#9993; lyndie@silverserviceconcierge.com</a>
+      <a href="tel:5127624771">&#9742; (512) 762-4771</a>
+      <span style="color: var(--silver);">&#9873; Austin, Texas</span>
+    </div>
+  </div>
+</section>
+
+<!-- ADDITIONAL SERVICES -->
+<section class="additional" id="additional">
+  <div class="container">
+    <div class="section-header">
+      <h2>Additional Services</h2>
+      <p>Beyond core care &mdash; we cover the details that make life work.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="additional-grid">
+      <div class="add-card">
+        <h3><span class="icon">&#128187;</span> Device Setup &amp; Monitoring</h3>
+        <p>Full technology support so seniors stay connected and safe online.</p>
+        <ul>
+          <li>Medical portal setup &amp; navigation</li>
+          <li>Video conferencing for family &amp; friends</li>
+          <li>Phishing, malware &amp; spam removal</li>
+          <li>Device data backup &amp; automatic backup services</li>
+          <li>New computer, phone, tablet &amp; printer setup</li>
+        </ul>
+      </div>
+      <div class="add-card">
+        <h3><span class="icon">&#128230;</span> Moving &amp; Downsizing</h3>
+        <p>End-to-end management of the entire moving process.</p>
+        <ul>
+          <li>Full move management to assisted living or smaller home</li>
+          <li>Sorting &amp; packing belongings</li>
+          <li>Coordination with bonded moving companies</li>
+          <li>Real estate professional coordination if selling</li>
+        </ul>
+      </div>
+      <div class="add-card">
+        <h3><span class="icon">&#127973;</span> Hospital Escort</h3>
+        <p>Most hospitals only provide basic service. We accompany or escort your loved one and ensure proper care during the visit &mdash; advocating on their behalf throughout.</p>
+      </div>
+      <div class="add-card">
+        <h3><span class="icon">&#128274;</span> Vetted Vendors On-Site</h3>
+        <p>Every vendor we bring to your loved one's home is highly vetted, and an SSC aide is always on-site when vendors are present. No strangers unsupervised &mdash; ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand"><span>Silver</span> Service Concierge</div>
+    <ul class="footer-links">
+      <li><a href="#pillars">Why Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#packages">Care Plan</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="YouTube">&#9654;</a>
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="TikTok">&#9834;</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Silver Service Concierge. All rights reserved. Austin, Texas.</div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('nav').classList.remove('open');
+    }
+  });
+});
+
+// Nav background on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 50) {
+    nav.style.background = 'rgba(26, 39, 68, 0.98)';
+  } else {
+    nav.style.background = 'rgba(26, 39, 68, 0.95)';
+  }
+});
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.pillar, .service-card, .package-card, .add-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
